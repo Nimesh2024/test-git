@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Candle with Flame</title>
+  <style>
+    body {
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .candle {
+      position: relative;
+      width: 60px;
+      height: 200px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .flame {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      width: 10px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.8) 0%, rgba(255, 200, 0, 0.6) 60%, transparent 80%);
+      border-radius: 50%;
+      animation: flicker 0.6s infinite;
+      transform: translateX(-50%);
+    }
+
+    .spark {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      width: 3px;
+      height: 3px;
+      background-color: #ff7f00;
+      border-radius: 50%;
+      opacity: 0;
+      animation: spark 0.8s infinite;
+      transform: translateX(-50%);
+    }
+
+    .spark:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .spark:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    @keyframes spark {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-30px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="candle">
+    <div class="flame"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+  </div>
+
+</body>
+</html>
